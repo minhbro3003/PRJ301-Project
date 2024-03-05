@@ -4,13 +4,14 @@
  */
 package controller.lecturer;
 
+import controller.authentication.BaseRequiredAuthenticationController;
 import dal.LessionDBContext;
+import entity.Account;
 import entity.Attendance;
 import entity.Lession;
 import entity.Student;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -19,22 +20,10 @@ import java.util.ArrayList;
  *
  * @author PC
  */
-public class AttendanceTaking extends HttpServlet {
+public class AttendanceTaking extends BaseRequiredAuthenticationController {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int leid = Integer.parseInt(request.getParameter("id"));
-        LessionDBContext db = new LessionDBContext();
-        ArrayList<Attendance> atts = db.getAttendencesByLession(leid);
-        request.setAttribute("atts", atts);
-        request.getRequestDispatcher("../view/lecturer/attendance.jsp").forward(request, response);
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account account) throws ServletException, IOException {
         int leid = Integer.parseInt(request.getParameter("id"));
         LessionDBContext db = new LessionDBContext();
         ArrayList<Student> students = db.getStudentsByLession(leid);
@@ -54,8 +43,17 @@ public class AttendanceTaking extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account) throws ServletException, IOException {
+        int leid = Integer.parseInt(request.getParameter("id"));
+        LessionDBContext db = new LessionDBContext();
+        ArrayList<Attendance> atts = db.getAttendencesByLession(leid);
+        request.setAttribute("atts", atts);
+        request.getRequestDispatcher("../view/lecturer/attendance.jsp").forward(request, response);
+    }
+
+    @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }
