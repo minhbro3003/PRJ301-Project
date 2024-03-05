@@ -4,13 +4,14 @@
  */
 package controller.lecturer;
 
+import controller.authentication.BaseRequiredAuthenticationController;
 import dal.LessionDBContext;
 import dal.TimeSlotDBContext;
+import entity.Account;
 import entity.Lession;
 import entity.TimeSlot;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -21,11 +22,10 @@ import util.DateTimeHelper;
  *
  * @author PC
  */
-public class TimeTable extends HttpServlet {
+public class TimeTable extends BaseRequiredAuthenticationController {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account) throws ServletException, IOException {
         int lid = Integer.parseInt(request.getParameter("id"));
         String raw_from = request.getParameter("from");
         String raw_to = request.getParameter("to");
@@ -63,13 +63,6 @@ public class TimeTable extends HttpServlet {
         request.setAttribute("lessions", lessions);
 
         request.getRequestDispatcher("../view/lecturer/timetable.jsp").forward(request, response);
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
     }
 
     @Override
@@ -77,4 +70,8 @@ public class TimeTable extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
