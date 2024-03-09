@@ -26,7 +26,8 @@ public class TimeTable extends BaseRequiredAuthenticationController {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account) throws ServletException, IOException {
-        int lid = Integer.parseInt(request.getParameter("id"));
+        //int lid = Integer.parseInt(request.getParameter("id"));
+        String lid = request.getParameter("id");
         String raw_from = request.getParameter("from");
         String raw_to = request.getParameter("to");
         java.sql.Date from = null;
@@ -55,7 +56,8 @@ public class TimeTable extends BaseRequiredAuthenticationController {
 
         LessionDBContext lessDB = new LessionDBContext();
         ArrayList<Lession> lessions = lessDB.getBy(lid, from, to);
-
+        
+        request.setAttribute("lid", lid);
         request.setAttribute("slots", slots);
         request.setAttribute("dates", dates);
         request.setAttribute("from", from);
