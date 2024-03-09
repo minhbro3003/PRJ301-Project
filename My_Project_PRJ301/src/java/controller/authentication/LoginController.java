@@ -46,9 +46,13 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("account", account);
                        
-            response.getWriter().println("Login sucessful!");
+            //response.getWriter().println("Login sucessful!");
+            response.sendRedirect("index.html");
         } else {
-            response.getWriter().println("Login failed");
+            //response.getWriter().println("Login failed");
+            request.setAttribute("errorMessage", "Invalid username or password");        
+            request.getRequestDispatcher("view/authentication/login.jsp").forward(request, response);
+
         }
     }
 
