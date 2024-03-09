@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  */
 public class LessionDBContext extends DBContext<Lession> {
 
-    public ArrayList<Lession> getBy(int lid, Date from, Date to) {
+    public ArrayList<Lession> getBy(String lid, Date from, Date to) {
         ArrayList<Lession> lessions = new ArrayList<>();
         try {
             String sql = "SELECT \n"
@@ -39,7 +39,7 @@ public class LessionDBContext extends DBContext<Lession> {
                     + "		INNER JOIN Lecturer l ON l.lid = les.lid\n"
                     + "WHERE les.lid = ? AND les.[date] >= ? and les.[date]<=?";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, lid);
+            stm.setString(1, lid);
             stm.setDate(2, from);
             stm.setDate(3, to);
             ResultSet rs = stm.executeQuery();
@@ -70,7 +70,7 @@ public class LessionDBContext extends DBContext<Lession> {
                 r.setName(rs.getString("rname"));
                 les.setRoom(r);
 
-                l.setId(rs.getInt("lid"));
+                l.setId(rs.getString("lid"));
                 l.setName(rs.getString("lname"));
                 les.setLecturer(l);
 
@@ -194,7 +194,7 @@ public class LessionDBContext extends DBContext<Lession> {
                     a.setTime(rs.getTimestamp("capturedtime"));
                 }
 
-                l.setId(rs.getInt("lid"));
+                l.setId(rs.getString("lid"));
                 l.setName(rs.getString("lname"));
                 les.setLecturer(l);
                 a.setLession(les);
