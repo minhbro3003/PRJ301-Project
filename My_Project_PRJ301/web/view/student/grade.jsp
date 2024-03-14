@@ -8,7 +8,9 @@
         
     </head>
     <body>
-        
+        <ol class="breadcrumb">
+            <span><a href="/My_Project/index.html">Home</a>&nbsp;|&nbsp;<b>View Schedule</b></span>
+        </ol>
         <form action="grade" method="GET">
             <table>
                 <h1 style="color: chocolate">View Grade</h1>
