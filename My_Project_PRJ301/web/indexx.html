@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>FPT University</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Montserrat', sans-serif;
+                background-color: #f8f9fa;
+                margin: 0;
+                padding: 0;
+                color: #343a40;
+            }
+
+            h1 {
+                color: chocolate;
+                margin-top: 30px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #007bff;
+                font-weight: bold;
+                margin-right: 20px;
+            }
+
+            a:hover {
+                color: #0056b3;
+            }
+
+            .container {
+                text-align: center;
+                margin-top: 50px;
+            }
+
+            .navbar-brand {
+                display: flex;
+                align-items: center;
+            }
+
+            .navbar-brand span {
+                margin-left: 8px;
+                font-size: 20px;
+            }
+
+            .navbar-toggler {
+                border: none;
+            }
+
+            .navbar-toggler-icon {
+                background-color: #007bff;
+            }
+
+            .navbar-nav {
+                margin-left: auto;
+                margin-right: 20px;
+            }
+
+            .navbar-nav .nav-link {
+                color: #343a40;
+            }
+
+            .navbar-nav .nav-link:hover {
+                color: #0056b3;
+            }
+
+            .hero-section {
+                background-color: #343a40;
+                color: #fff;
+                padding: 100px 0;
+            }
+
+            .featured-section {
+                margin-top: 50px;
+            }
+
+            .custom-block {
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .custom-block:hover {
+                transform: scale(1.05);
+            }
+
+            .custom-block-image {
+                width: 100%;
+                height: auto;
+            }
+
+            .custom-block-overlay {
+                position: relative;
+                overflow: hidden;
+                border-radius: 15px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .custom-block-overlay:hover {
+                transform: scale(1.05);
+            }
+
+            .custom-block-overlay-text {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 20px;
+                color: #fff;
+            }
+
+            .social-share {
+                margin-top: auto;
+            }
+
+            .social-icon {
+                list-style: none;
+                display: flex;
+                gap: 10px;
+            }
+
+            .social-icon-item {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: background-color 0.3s ease-in-out;
+            }
+
+            .social-icon-item:hover {
+                background-color: #f8f9fa;
+            }
+
+            .custom-icon {
+                font-size: 30px;
+                color: #fff;
+                margin-left: auto;
+                transition: color 0.3s ease-in-out;
+            }
+
+            .custom-icon:hover {
+                color: #f8f9fa;
+            }
+
+            .explore-section {
+                padding: 100px 0;
+                background-color: #fff;
+            }
+
+            .explore-section h2 {
+                color: #343a40;
+            }
+
+            .mb-4 {
+                margin-bottom: 1.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-back"></i>
+                    <span>FPT University</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_1">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_2" onclick="redirectToTimetable()">Timetable Lecturer</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_3" onclick="Attendance(1)">Attendance Lecturer</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_4" onclick="Grade(2, 3)">Grade</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_5" onclick="Login()">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_6">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="d-none d-lg-block">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-12 mx-auto">
+                        <h1 class="text-white text-center">Welcome to FPT University</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                            <a href="topics-detail.html">
+                                <div class="d-flex">
+                                    <div>
+                                        <h5 class="mb-2">Web Design</h5>
+                                        <p class="mb-0">When you search for free CSS templates, you will notice that TemplateMo is one of the best websites.</p>
+                                    </div>
+                                    <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                </div>
+                                <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="custom-block custom-block-overlay">
+                            <div class="d-flex flex-column h-100">
+                                <img src="images/businesswoman-using-tablet-analysis.jpg" class="custom-block-image img-fluid" alt="">
+                                <div class="custom-block-overlay-text d-flex">
+                                    <div>
+                                        <h5 class="text-white mb-2">Finance</h5>
+                                        <p class="text-white">Topic Listing Template includes homepage, listing page, detail page, and contact page. You can feel free to edit and adapt for your CMS requirements.</p>
+                                        <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                    </div>
+                                    <span class="badge bg-finance rounded-pill ms-auto">25</span>
+                                </div>
+                                <div class="social-share d-flex">
+                                    <p class="text-white me-4">Share:</p>
+                                    <ul class="social-icon">
+                                        <li class="social-icon-item">
+                                            <a href="#" class="social-icon-link bi-twitter"></a>
+                                        </li>
+                                        <li class="social-icon-item">
+                                            <a href="#" class="social-icon-link bi-facebook"></a>
+                                        </li>
+                                        <li class="social-icon-item">
+                                            <a href="#" class="social-icon-link bi-pinterest"></a>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
+                                </div>
+                                <div class="section-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="explore-section section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="mb-4">Browse Topics</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+            <script>
+                function redirectToTimetable() {
+                    var url = "lecturer/timetable";
+                    redirectTo(url);
+                }
+
+                function Attendance(id) {
+                    var url = "lecturer/attendance?id=" + id;
+                    redirectTo(url);
+                }
+
+                function Grade(sid, subid) {
+                    var url = "student/grade?sid=" + sid + "&subid=" + subid;
+                    redirectTo(url);
+                }
+
+                function Login() {
+                    var url = "login";
+                    redirectTo(url);
+                }
+
+                function redirectTo(url) {
+                    window.location.href = url;
+                }
+            </script>
+
+    </body>
+</html>
