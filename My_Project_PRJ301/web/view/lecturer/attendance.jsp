@@ -99,10 +99,6 @@
             <li style="float: right; "><a style="color: #198754" href="/My_Project/logout">Logout</a></li>
             <div style="clear: both;"></div>
         </ol>
-        <form action="logout" method="POST">
-            
-            <input type="submit" value="Logout"/>
-        </form>
         <c:set var="id" value="0"/>
         <form action="attendance" method="POST">
             <input type="hidden" name="id" value="${param.id}" />
