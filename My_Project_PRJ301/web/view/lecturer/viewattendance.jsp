@@ -35,10 +35,10 @@
                         <td><c:set var="id" value="${(id+1)}"/>${id}</td>
                         <td>${a.student.name}</td>
                         <td>
-                            <c:if test="${a.isPresent}">
+                            <c:if test="${a.present}">
                                 <p style="color: green">Present</p>
                             </c:if>
-                                <c:if test="${!a.isPresent}">
+                                <c:if test="${!a.present}">
                                 <p style="color: red">Absent</p>
                             </c:if>
                         </td>
