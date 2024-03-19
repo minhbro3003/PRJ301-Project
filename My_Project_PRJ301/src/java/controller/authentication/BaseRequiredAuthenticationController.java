@@ -15,7 +15,7 @@ import java.io.IOException;
 
 /**
  *
- * @author sonnt
+ * @author PC
  */
 public abstract class BaseRequiredAuthenticationController extends HttpServlet {
 
