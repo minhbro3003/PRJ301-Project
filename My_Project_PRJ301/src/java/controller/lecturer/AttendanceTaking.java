@@ -4,11 +4,12 @@
  */
 package controller.lecturer;
 
-import controller.authentication.BaseRequiredAuthenticationController;
+import controller.authentication.authorization.BaseRBACController;
 import dal.LessionDBContext;
 import entity.Account;
 import entity.Attendance;
 import entity.Lession;
+import entity.Role;
 import entity.Student;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -20,10 +21,10 @@ import java.util.ArrayList;
  *
  * @author PC
  */
-public class AttendanceTaking extends BaseRequiredAuthenticationController {
+public class AttendanceTaking extends BaseRBACController {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account account) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account account, ArrayList<Role> roles) throws ServletException, IOException {
         int leid = Integer.parseInt(request.getParameter("id"));
         LessionDBContext db = new LessionDBContext();
         ArrayList<Student> students = db.getStudentsByLession(leid);
@@ -43,7 +44,7 @@ public class AttendanceTaking extends BaseRequiredAuthenticationController {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account, ArrayList<Role> roles) throws ServletException, IOException {
         int leid = Integer.parseInt(request.getParameter("id"));
         LessionDBContext db = new LessionDBContext();
         ArrayList<Attendance> atts = db.getAttendencesByLession(leid);
