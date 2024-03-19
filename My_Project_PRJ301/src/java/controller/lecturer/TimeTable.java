@@ -5,10 +5,12 @@
 package controller.lecturer;
 
 import controller.authentication.BaseRequiredAuthenticationController;
+import controller.authentication.authorization.BaseRBACController;
 import dal.LessionDBContext;
 import dal.TimeSlotDBContext;
 import entity.Account;
 import entity.Lession;
+import entity.Role;
 import entity.TimeSlot;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -22,10 +24,10 @@ import util.DateTimeHelper;
  *
  * @author PC
  */
-public class TimeTable extends BaseRequiredAuthenticationController {
+public class TimeTable extends BaseRBACController {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account, ArrayList<Role> roles) throws ServletException, IOException {
         //int lid = Integer.parseInt(request.getParameter("id"));
         String lid = request.getParameter("id");
         String raw_from = request.getParameter("from");
@@ -73,7 +75,7 @@ public class TimeTable extends BaseRequiredAuthenticationController {
     }// </editor-fold>
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp, Account account, ArrayList<Role> roles) throws ServletException, IOException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
