@@ -37,7 +37,7 @@ public class ViewAttendance extends BaseRBACController {
         LessionDBContext db = new LessionDBContext();
         ArrayList<Attendance> atts = db.getAttendencesByLession(leid);
         request.setAttribute("atts", atts);
-        request.getRequestDispatcher("../view/lecturer/viewattendance.jsp").forward(request, response);
+        request.getRequestDispatcher("/view/lecturer/viewattendance.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
