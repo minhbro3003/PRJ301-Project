@@ -50,7 +50,7 @@
                     </tr>    
                 </c:forEach>
             </table>
-            <input type="submit" value="Save"/>
+            
         </form>
     </body>
 </html>
