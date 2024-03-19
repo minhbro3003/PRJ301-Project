@@ -10,7 +10,71 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>View Attendance Page</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            .breadcrumb {
+                padding: 10px 16px;
+                list-style: none;
+                background-color: #f8f9fa;
+                border-radius: 0px;
+            }
+
+            .breadcrumb li {
+                display: inline-block;
+            }
+
+            .breadcrumb li+li:before {
+                padding: 8px;
+                color: black;
+                content: "/\00a0";
+            }
+
+            .breadcrumb li a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            .breadcrumb li a:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            input[type="submit"] {
+                background-color: #007bff;
+                color: white;
+                padding: 8px 16px;
+                border: none;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+        </style>
     </head>
     <body>
         <ol class="breadcrumb">
@@ -38,7 +102,7 @@
                             <c:if test="${a.present}">
                                 <p style="color: green">Present</p>
                             </c:if>
-                                <c:if test="${!a.present}">
+                            <c:if test="${!a.present}">
                                 <p style="color: red">Absent</p>
                             </c:if>
                         </td>
@@ -50,7 +114,7 @@
                     </tr>    
                 </c:forEach>
             </table>
-            
+
         </form>
     </body>
 </html>
